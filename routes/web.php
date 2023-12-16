@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +26,12 @@ Route::get('/', function () {
 Route::get('/question', [QuestionController::class,'index'])->name('question');
 Route::post('/question', [QuestionController::class,'store']);
 Route::put('/answers', [AnswerController::class,'update']);
+Route::delete('/question/{question}', [QuestionController::class,'destroy']);
 
+Route::get('/quiz', [QuizController::class,'index']);
+Route::post('/results', [QuizController::class,'results']);
+
+Route::fallback(function(){
+    return Inertia('Home');
+});
 require __DIR__.'/auth.php';

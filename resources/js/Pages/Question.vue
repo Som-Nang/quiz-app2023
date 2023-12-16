@@ -106,6 +106,11 @@ function updateAnswers() {
         showViewQuestionModal.value = false;
     });
 }
+
+function deleteQuestion(id){
+    
+    router.delete('/question/'+id)
+}
 </script>
 
 <template>
@@ -138,7 +143,7 @@ function updateAnswers() {
                                 View
                             </button>
                             <button class="btn btn-success">Edit</button>
-                            <button class="btn btn-error">Delete</button>
+                            <button @click="deleteQuestion(question.id)" class="btn btn-error">Delete</button>
                         </td>
                     </tr>
                 </tbody>

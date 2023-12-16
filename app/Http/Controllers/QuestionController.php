@@ -42,6 +42,9 @@
         ]);
      }
 
+     public function destroy (Question $question){
+      $question->delete();
+     }
       public function show (Question $question){
 
       }
